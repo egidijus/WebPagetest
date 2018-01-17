@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+    server:
+        build:
+            context: docker-files/server
+        ports:
+            - 4000:80
+
+    agent:
+        build:
+            context: docker-files/agent
+        links:
+          - server:server
+        environment:
+            SERVER_URL: http://server/work/
+            LOCATION: Test
+        ports:
+            - 4001:80
