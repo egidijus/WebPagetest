@@ -6,6 +6,8 @@ services:
             context: docker-files/server
         ports:
             - 4000:80
+        mem_limit: 1024MB
+        cpu_shares: 256
 
     agent:
         build:
@@ -17,3 +19,5 @@ services:
             LOCATION: Test
         ports:
             - 4001:80
+        mem_limit: 1024MB
+        cpu_shares: 256
